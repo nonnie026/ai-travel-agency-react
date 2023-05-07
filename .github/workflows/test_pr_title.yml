@@ -1,0 +1,24 @@
+name: 'Test PR Title'
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+
+jobs:
+  test-pr-title:
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+    steps:
+      - name: Conventional PR Title Checker
+        uses: aslafy-z/conventional-pr-title-action@v3
+        with:
+          success-state: PR title follows the standard
+          failure-state: Please conform to PR title standard
+          preset: conventional-changelog-angular@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,47 @@
+{
+    "env": {
+      "es6": true,
+      "browser": true,
+      "jest": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx"]
+        }
+      }
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "no-use-before-define": ["error", { "variables": false }],
+      "react/jsx-uses-react": ["error"],
+      "react/jsx-uses-vars": ["error"],
+      "jsx-a11y/no-autofocus": "off",
+      "import/prefer-default-export": "off",
+      "import/no-extraneous-dependencies": [
+        "error",
+        { "devDependencies": ["**/*.test.js", "**/*.stories.js", "**/*.story.js", "**/*.stories.jsx", "**/*.story.jsx"] }
+      ],
+      "class-methods-use-this": "off",
+      "no-dupe-class-members": "off"
+    },
+    "overrides": [{
+      "files": ["*.story.jsx", "*.stories.jsx", "*.story.js", "*.stories.js"],
+      "rules": {
+        "no-console": "off"
+      }
+    }],
+    "globals": {
+      "__DEV__": true
+    },
+    "extends": ["airbnb-base", "plugin:prettier/recommended", "plugin:jsx-a11y/recommended", "plugin:import/recommended"],
+    "plugins": ["react", "prettier"]
+  }
