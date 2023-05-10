@@ -23,7 +23,7 @@
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "no-use-before-define": ["error", { "variables": false }],
       "react/jsx-uses-react": ["error"],
-      "react/jsx-uses-vars": ["error"],
+      "react/jsx-uses-vars": [1],
       "jsx-a11y/no-autofocus": "off",
       "import/prefer-default-export": "off",
       "import/no-extraneous-dependencies": [

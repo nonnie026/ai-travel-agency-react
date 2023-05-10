@@ -1,8 +1,7 @@
-export const App = () => {
-  return (
-    <div className="App">
-      <h1>New Create React App Project</h1>
-    </div>
-  );
-}
+import React from 'react';
+import './App.css';
+import { ItineraryContainer } from './Containers/ItineraryContainer';
 
+export const App = () => {
+  return <ItineraryContainer />;
+};
