@@ -51,11 +51,6 @@ export const ItineraryScreen = ({ handleItineraryConfirmation }) => {
           </Box>
         ))}
       </Box>
-      <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={2}>
-        <Button variant="contained" color="primary" onClick={handleItineraryConfirmation}>
-          Next
-        </Button>
-      </Box>
     </div>
   );
 };

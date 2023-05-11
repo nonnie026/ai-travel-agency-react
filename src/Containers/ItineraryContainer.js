@@ -3,12 +3,14 @@ import { WelcomeScreen } from '../Screens/WelcomeScreen';
 import { FlightFormScreen } from '../Forms/FlightFormScreen';
 import { AccommodationFormScreen } from '../Forms/AccommodationFormScreen';
 import { FoodInterestsActivitiesFormScreen } from '../Forms/FoodInterestsActivitiesFormScreen';
+import { UserTextInputFormScreen } from '../Forms/UserTextFormScreen';
 import { LoadingScreen } from '../Screens/LoadingScreen';
 import { HotelOptionsScreen } from '../Screens/HotelOptionsScreen';
 import { ItineraryScreen } from '../Screens/ItineraryScreen';
 import { TotalCostScreen } from '../Screens/TotalCostScreen';
 import { FlightOptionsScreen } from '../Screens/FlightOptionsScreen';
 import { TripBookedScreen } from '../Screens/TripBookedScreen';
+import { ThankYouScreen } from '../Screens/ThankYouScreen';
 
 export const ItineraryContainer = () => {
   const [screen, setScreen] = useState('welcome');
@@ -38,6 +40,14 @@ export const ItineraryContainer = () => {
 
   const handleBackToAccommodationForm = () => {
     setScreen('accommodation-form');
+  };
+
+  const handleUserActivities = () => {
+    setScreen('user-text-input-form');
+  };
+
+  const handleBackToActivities = () => {
+    setScreen('food-interests-activities-form');
   };
 
   const handleCreateItinerary = () => {
@@ -71,10 +81,10 @@ export const ItineraryContainer = () => {
         />
       )}
       {screen === 'food-interests-activities-form' && (
-        <FoodInterestsActivitiesFormScreen
-          handleSubmit={handleCreateItinerary}
-          goBack={handleBackToAccommodationForm}
-        />
+        <FoodInterestsActivitiesFormScreen handleSubmit={handleUserActivities} goBack={handleBackToAccommodationForm} />
+      )}
+      {screen === 'user-text-input-form' && (
+        <UserTextInputFormScreen handleSubmit={handleCreateItinerary} goBack={handleBackToActivities} />
       )}
       {screen === 'loading' && <LoadingScreen handleLoadingDone={handleLoadingDone} />}
       {screen === 'itinerary' && <ItineraryScreen handleItineraryConfirmation={handleItineraryConfirmation} />}
@@ -82,6 +92,7 @@ export const ItineraryContainer = () => {
       {screen === 'flight-options' && <FlightOptionsScreen handleFlightOptions={handleFlightOptions} />}
       {screen === 'total-cost' && <TotalCostScreen bookTrip={handleBookTrip} />}
       {screen === 'trip-booked' && <TripBookedScreen />}
+      {screen === 'thank-you' && <ThankYouScreen />}
     </>
   );
 };

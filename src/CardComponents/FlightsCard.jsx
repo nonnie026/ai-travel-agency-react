@@ -1,8 +1,13 @@
 import React from 'react';
-import { Card, CardContent, Typography, Avatar, Box, Divider, Button } from '@material-ui/core';
+import { Card, CardContent, Typography, Avatar, Box, Divider, Button, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  tooltip: {
+    fontSize: '1.2rem',
+    color: 'white',
+    backgroundColor: '#EB4D2A',
+  },
   card: {
     margin: theme.spacing(2),
     padding: theme.spacing(2),
@@ -21,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const FlightCard = ({ flight, onButtonClick }) => {
+export const FlightCard = ({ flight }) => {
   const classes = useStyles();
 
   return (
@@ -73,9 +78,16 @@ export const FlightCard = ({ flight, onButtonClick }) => {
           <Typography>
             {flight.economy.currency} {flight.economy.price}
           </Typography>
-          <Button className={classes.button} color="primary" onClick={onButtonClick} variant="contained">
-            Reserve
-          </Button>
+          <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            title={
+              'When this button is clicked the user will be redirected to relevant booking platform so they can book their flights'
+            }
+          >
+            <Button className={classes.button} color="primary" variant="contained">
+              Reserve
+            </Button>
+          </Tooltip>
         </Box>
         <Divider />
         <Box
@@ -90,7 +102,7 @@ export const FlightCard = ({ flight, onButtonClick }) => {
           <Typography>
             {flight.business.currency} {flight.business.price}
           </Typography>
-          <Button className={classes.button} color="primary" onClick={onButtonClick} variant="contained">
+          <Button className={classes.button} color="primary" variant="contained">
             Reserve
           </Button>
         </Box>

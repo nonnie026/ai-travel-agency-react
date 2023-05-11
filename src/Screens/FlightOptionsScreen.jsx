@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import LeftArrowIcon from '@material-ui/icons/ArrowBackIos';
+import RightArrowIcon from '@material-ui/icons/ArrowForwardIos';
 import { FlightCard } from '../CardComponents/FlightsCard';
 import { flights } from '../utilities/flights'; // assuming flights data is exported from 'flights.js'
 
@@ -35,9 +37,14 @@ export const FlightOptionsScreen = ({ handleFlightOptions }) => {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
-        Our Featured Hotels
-      </Typography>
+      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+        <LeftArrowIcon style={{ cursor: 'pointer' }} />
+        <Typography variant="h4" component="h2" className={classes.heading}>
+          Our Featured Flights
+        </Typography>
+        <RightArrowIcon onClick={handleFlightOptions} style={{ cursor: 'pointer' }} />
+      </Box>
+
       <Grid container spacing={2}>
         {flights.map((flight, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>

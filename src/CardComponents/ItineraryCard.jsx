@@ -4,6 +4,7 @@ import { Card, CardContent, Typography, Box, Link, Tooltip } from '@material-ui/
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import ChatIcon from '@material-ui/icons/Chat';
 
 const useStyles = makeStyles((theme) => ({
   tooltip: {
@@ -41,6 +42,12 @@ export const ItineraryCard = ({ schedule }) => {
           >
             <Typography variant="h6">{item.time}</Typography>
             <Box style={{ cursor: 'pointer' }}>
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                title="This button will allow users to give text based instructions to change the itinerary. This includes the time as well as the place. Once edited, the itinerary we be reconstructed with the users changes in place"
+              >
+                <ChatIcon color="primary" style={{ marginRight: '4px' }} />
+              </Tooltip>
               <Tooltip
                 classes={{ tooltip: classes.tooltip }}
                 title="This button will allow users to edit the specific item on their itinerary. This includes the time as well as the place. Once edited, the itinerary we be reconstructed with the users changes in place"

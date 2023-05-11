@@ -1,16 +1,22 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Button, Box, Grid } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Typography, Button, Box, Grid, Tooltip, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Rating } from '@material-ui/lab';
 
 const useStyles = makeStyles((theme) => ({
+  tooltip: {
+    fontSize: '1.2rem',
+    color: 'white',
+    backgroundColor: '#EB4D2A',
+  },
   card: {
     padding: theme.spacing(1),
     width: '100%',
     boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.16)',
     backgroundColor: '#fff',
     border: '1px solid rgba(0, 0, 0, 0.12)',
-    height: '80vh', // Fixed height
+    minHeight: '80vh', // Fixed height
+    height: '100%', // Make sure height is 100%
     position: 'relative',
   },
   media: {
@@ -34,21 +40,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HotelCard = ({ hotel, onButtonClick }) => {
+export const HotelCard = ({ hotel }) => {
   const classes = useStyles();
 
-  const createSummary = () => {
-    const { amenities, nearbyAttractions } = hotel;
+  // const createSummary = () => {
+  //   const { amenities, nearbyAttractions } = hotel;
 
-    const amenitiesText = Object.keys(amenities)
-      .filter((key) => amenities[key])
-      .map((amenity) => amenity.charAt(0).toUpperCase() + amenity.slice(1))
-      .join(', ');
+  //   const amenitiesText = Object.keys(amenities)
+  //     .filter((key) => amenities[key])
+  //     .map((amenity) => amenity.charAt(0).toUpperCase() + amenity.slice(1))
+  //     .join(', ');
 
-    const nearbyAttractionsText = nearbyAttractions.slice(0, 2).join(', ');
+  //   const nearbyAttractionsText = nearbyAttractions.slice(0, 2).join(', ');
 
-    return `Experience ultimate luxury with ${amenitiesText} at your fingertips. Unwind by exploring nearby attractions like ${nearbyAttractionsText}, and more!`;
-  };
+  //   return `Experience ultimate luxury with ${amenitiesText} at your fingertips. Unwind by exploring nearby attractions like ${nearbyAttractionsText}, and more!`;
+  // };
 
   return (
     <Card className={classes.card}>
@@ -72,20 +78,24 @@ export const HotelCard = ({ hotel, onButtonClick }) => {
             <Box marginBottom={1}>
               <Rating value={hotel.rating} precision={0.1} readOnly />
             </Box>
-            <Typography variant="body1">{createSummary()}</Typography>
+            <Typography variant="body1">{`PROS: ${hotel.pros}`}</Typography>
+            <Divider style={{ margin: '1rem' }} />
+            <Typography variant="body1">{`CONS: ${hotel.cons}`}</Typography>
             <Box marginTop={1}>
               <Typography variant="caption">{hotel.address}</Typography>
             </Box>
           </CardContent>
           <Box display="flex" justifyContent="flex-start" className={classes.bookButton}>
-            <Button
-              variant="contained"
-              onClick={onButtonClick}
-              color="primary"
-              style={{ marginLeft: '16px', marginRight: '16px' }}
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              title={
+                'When this button is clicked the user will be redirected to relevant booking platform so they can book their accommodation'
+              }
             >
-              Reserve
-            </Button>
+              <Button variant="contained" color="primary" style={{ marginLeft: '16px', marginRight: '16px' }}>
+                Reserve
+              </Button>
+            </Tooltip>
           </Box>
         </Grid>
       </Grid>

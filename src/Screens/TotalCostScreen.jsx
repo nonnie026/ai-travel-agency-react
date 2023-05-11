@@ -1,9 +1,16 @@
 import React from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@material-ui/core';
+import { Card, CardContent, Typography, Button, Box, Tooltip } from '@material-ui/core';
+import LeftArrowIcon from '@material-ui/icons/ArrowBackIos';
+import RightArrowIcon from '@material-ui/icons/ArrowForwardIos';
 import { makeStyles } from '@material-ui/core/styles';
 import { costs } from '../utilities/costs'; // Assuming costs data is in the same directory
 
 const useStyles = makeStyles((theme) => ({
+  tooltip: {
+    fontSize: '1.2rem',
+    color: 'white',
+    backgroundColor: '#EB4D2A',
+  },
   container: {
     display: 'flex',
     justifyContent: 'center',
@@ -46,24 +53,28 @@ export const TotalCostScreen = ({ bookTrip }) => {
   const classes = useStyles();
 
   const totalCost =
-    costs.accomodation.amount +
+    // costs.accomodation.amount +
     costs.transportation.amount +
     costs.carHire.amount +
-    costs.flights.amount +
+    // costs.flights.amount +
     costs.activities.reduce((acc, activity) => acc + activity.amount, 0);
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
-        Total Costs
-      </Typography>
+      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+        <LeftArrowIcon style={{ cursor: 'pointer' }} />
+        <Typography variant="h4" component="h2" className={classes.heading}>
+          Our Featured Flights
+        </Typography>
+        <RightArrowIcon onClick={bookTrip} style={{ cursor: 'pointer' }} />
+      </Box>
       <Card className={classes.card}>
         <CardContent>
-          <Typography variant="h6">Accomodation:</Typography>
+          {/* <Typography variant="h6">Accomodation:</Typography>
           <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant="body1">{costs.accomodation.name}</Typography>
             <Typography variant="body1">${costs.accomodation.amount}</Typography>
-          </Box>
+          </Box> */}
 
           <Typography variant="h6">Transportation:</Typography>
           <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -71,17 +82,17 @@ export const TotalCostScreen = ({ bookTrip }) => {
             <Typography variant="body1">${costs.transportation.amount}</Typography>
           </Box>
 
-          <Typography variant="h6">Car Hire:</Typography>
+          {/* <Typography variant="h6">Car Hire:</Typography>
           <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant="body1">{costs.carHire.name}</Typography>
             <Typography variant="body1">${costs.carHire.amount}</Typography>
-          </Box>
+          </Box> */}
 
-          <Typography variant="h6">Flights:</Typography>
+          {/* <Typography variant="h6">Flights:</Typography>
           <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant="body1">{costs.flights.name}</Typography>
             <Typography variant="body1">${costs.flights.amount}</Typography>
-          </Box>
+          </Box> */}
 
           <Typography variant="h6">Activities:</Typography>
           {costs.activities.map((activity, index) => (
@@ -106,9 +117,16 @@ export const TotalCostScreen = ({ bookTrip }) => {
           </Box>
 
           <Box marginTop={2} style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-            <Button className={classes.button} onClick={bookTrip} variant="contained">
-              Pay
-            </Button>
+            <Tooltip
+              classes={{ tooltip: classes.tooltip }}
+              title={
+                'When this button is clicked the user will be able to book for the activities as shown in the itinerary. '
+              }
+            >
+              <Button className={classes.button} variant="contained">
+                Pay for Activities
+              </Button>
+            </Tooltip>
           </Box>
         </CardContent>
       </Card>

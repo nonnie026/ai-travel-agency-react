@@ -1,6 +1,8 @@
 import React from 'react';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import LeftArrowIcon from '@material-ui/icons/ArrowBackIos';
+import RightArrowIcon from '@material-ui/icons/ArrowForwardIos';
 import { HotelCard } from '../CardComponents/HotelCard';
 import { hotels } from '../utilities/hotels';
 
@@ -35,9 +37,13 @@ export const HotelOptionsScreen = ({ handleHotelOptions }) => {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
-        Our Featured Hotels
-      </Typography>
+      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+        <LeftArrowIcon style={{ cursor: 'pointer' }} />
+        <Typography variant="h4" component="h2" className={classes.heading}>
+          Our Featured Hotels
+        </Typography>
+        <RightArrowIcon onClick={handleHotelOptions} style={{ cursor: 'pointer' }} />
+      </Box>
       <Grid container spacing={3} justifyContent="center" direction="row">
         {hotels.map((hotel, index) => (
           <Grid xs={4} item key={index}>
