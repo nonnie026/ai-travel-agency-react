@@ -35,7 +35,7 @@ export const ItineraryScreen = ({ handleItineraryConfirmation }) => {
 
   return (
     <div className={classes.container}>
-      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: 'auto' }}>
         <Typography variant="h4" component="h2" className={classes.heading}>
           Here's Your Itinerary
         </Typography>

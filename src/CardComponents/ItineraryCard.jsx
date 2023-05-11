@@ -1,11 +1,16 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { Card, CardContent, Typography, Box, Link } from '@material-ui/core';
+import { Card, CardContent, Typography, Box, Link, Tooltip } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
+  tooltip: {
+    fontSize: '1.2rem',
+    color: 'white',
+    backgroundColor: '#EB4D2A',
+  },
   card: {
     padding: theme.spacing(1),
     width: '100%',
@@ -36,8 +41,18 @@ export const ItineraryCard = ({ schedule }) => {
           >
             <Typography variant="h6">{item.time}</Typography>
             <Box style={{ cursor: 'pointer' }}>
-              <EditIcon style={{ marginRight: '4px' }} />
-              <DeleteIcon style={{ color: 'red' }} />
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                title="This button will allow users to edit the specific item on their itinerary. This includes the time as well as the place. Once edited, the itinerary we be reconstructed with the users changes in place"
+              >
+                <EditIcon style={{ marginRight: '4px' }} />
+              </Tooltip>
+              <Tooltip
+                classes={{ tooltip: classes.tooltip }}
+                title="The delete button will remove the itinerary item from the schedule. This will create a gap that the user can choose to either fill or leave blank"
+              >
+                <DeleteIcon style={{ color: 'red' }} />
+              </Tooltip>
             </Box>
           </Box>
           <Typography variant="body1" className={classes.activity}>

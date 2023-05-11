@@ -48,13 +48,13 @@ export const ItineraryContainer = () => {
   };
 
   const handleItineraryConfirmation = () => {
-    setScreen('hotel-options');
-  };
-  const handleHotelOptions = () => {
     setScreen('flight-options');
   };
-  const handleFlightOptions = () => {
+  const handleHotelOptions = () => {
     setScreen('total-cost');
+  };
+  const handleFlightOptions = () => {
+    setScreen('hotel-options');
   };
   const handleBookTrip = () => {
     setScreen('trip-booked');
