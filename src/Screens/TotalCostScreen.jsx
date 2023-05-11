@@ -64,7 +64,7 @@ export const TotalCostScreen = ({ bookTrip }) => {
       <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
         <LeftArrowIcon style={{ cursor: 'pointer' }} />
         <Typography variant="h4" component="h2" className={classes.heading}>
-          Our Featured Flights
+          Activity Reservation Costs
         </Typography>
         <RightArrowIcon onClick={bookTrip} style={{ cursor: 'pointer' }} />
       </Box>

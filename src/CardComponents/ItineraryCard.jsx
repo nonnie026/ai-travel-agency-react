@@ -50,7 +50,7 @@ export const ItineraryCard = ({ schedule }) => {
               </Tooltip>
               <Tooltip
                 classes={{ tooltip: classes.tooltip }}
-                title="This button will allow users to edit the specific item on their itinerary. This includes the time as well as the place. Once edited, the itinerary we be reconstructed with the users changes in place"
+                title="This button will allow users to manually edit the specific item on their itinerary. This includes the time as well as the place. Once edited, the itinerary we be reconstructed with the users changes in place"
               >
                 <EditIcon style={{ marginRight: '4px' }} />
               </Tooltip>
