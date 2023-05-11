@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState } from 'react';
-import { Card, CardContent, Typography, Button, Box, Link } from '@material-ui/core';
+import React from 'react';
+import { Card, CardContent, Typography, Box, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -19,13 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const ItineraryCard = ({ schedule, variable }) => {
+export const ItineraryCard = ({ schedule }) => {
   const classes = useStyles();
-  const [colors, setColors] = useState(Array(schedule.length).fill('#3f51b5'));
-
-  const handleClick = (index) => {
-    setColors(colors.map((color, i) => (i === index ? (color === '#3f51b5' ? 'green' : '#3f51b5') : color)));
-  };
 
   return (
     <Card className={classes.card}>
@@ -48,7 +43,7 @@ export const ItineraryCard = ({ schedule, variable }) => {
           <Typography variant="body1" className={classes.activity}>
             {item.activity}
           </Typography>
-          <Link href="#" color="primary">
+          <Link href="#" variant="body2" color="primary">
             {item.address}
           </Link>
           <Box
@@ -60,14 +55,6 @@ export const ItineraryCard = ({ schedule, variable }) => {
             style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}
           >
             <Typography variant="h6">{item.price}</Typography>
-            <Button
-              style={{ backgroundColor: item.price === variable ? '' : colors[index], color: 'white' }}
-              variant="contained"
-              onClick={() => handleClick(index)}
-              disabled={item.price === variable}
-            >
-              {`${colors[index] === '#3f51b5' ? 'Reserve' : 'Reserved'}`}
-            </Button>
           </Box>
         </CardContent>
       ))}

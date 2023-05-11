@@ -35,9 +35,14 @@ export const ItineraryScreen = ({ handleItineraryConfirmation }) => {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
-        Here's Your Itinerary
-      </Typography>
+      <Box style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+        <Typography variant="h4" component="h2" className={classes.heading}>
+          Here's Your Itinerary
+        </Typography>
+        <Button variant="contained" color="primary" onClick={handleItineraryConfirmation}>
+          Accept Itinerary
+        </Button>
+      </Box>
       <Box>
         {itinerary.map((day, index) => (
           <Box key={index} marginBottom={4}>

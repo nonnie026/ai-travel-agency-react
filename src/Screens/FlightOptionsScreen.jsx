@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { HotelCard } from '../CardComponents/HotelCard';
-import { hotels } from '../utilities/hotels';
+import { FlightCard } from '../CardComponents/FlightsCard';
+import { flights } from '../utilities/flights'; // assuming flights data is exported from 'flights.js'
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HotelOptionsScreen = ({ handleHotelOptions }) => {
+export const FlightOptionsScreen = ({ handleFlightOptions }) => {
   const classes = useStyles();
 
   return (
@@ -38,10 +38,10 @@ export const HotelOptionsScreen = ({ handleHotelOptions }) => {
       <Typography variant="h4" component="h2" className={classes.heading}>
         Our Featured Hotels
       </Typography>
-      <Grid container spacing={3} justifyContent="center" direction="row">
-        {hotels.map((hotel, index) => (
-          <Grid xs={4} item key={index}>
-            <HotelCard hotel={hotel} onButtonClick={handleHotelOptions} />
+      <Grid container spacing={2}>
+        {flights.map((flight, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <FlightCard flight={flight} onButtonClick={handleFlightOptions} />
           </Grid>
         ))}
       </Grid>

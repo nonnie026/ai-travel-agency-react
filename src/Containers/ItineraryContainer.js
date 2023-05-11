@@ -6,6 +6,9 @@ import { FoodInterestsActivitiesFormScreen } from '../Forms/FoodInterestsActivit
 import { LoadingScreen } from '../Screens/LoadingScreen';
 import { HotelOptionsScreen } from '../Screens/HotelOptionsScreen';
 import { ItineraryScreen } from '../Screens/ItineraryScreen';
+import { TotalCostScreen } from '../Screens/TotalCostScreen';
+import { FlightOptionsScreen } from '../Screens/FlightOptionsScreen';
+import { TripBookedScreen } from '../Screens/TripBookedScreen';
 
 export const ItineraryContainer = () => {
   const [screen, setScreen] = useState('welcome');
@@ -47,6 +50,15 @@ export const ItineraryContainer = () => {
   const handleItineraryConfirmation = () => {
     setScreen('hotel-options');
   };
+  const handleHotelOptions = () => {
+    setScreen('flight-options');
+  };
+  const handleFlightOptions = () => {
+    setScreen('total-cost');
+  };
+  const handleBookTrip = () => {
+    setScreen('trip-booked');
+  };
 
   return (
     <>
@@ -66,7 +78,10 @@ export const ItineraryContainer = () => {
       )}
       {screen === 'loading' && <LoadingScreen handleLoadingDone={handleLoadingDone} />}
       {screen === 'itinerary' && <ItineraryScreen handleItineraryConfirmation={handleItineraryConfirmation} />}
-      {screen === 'hotel-options' && <HotelOptionsScreen />}
+      {screen === 'hotel-options' && <HotelOptionsScreen handleHotelOptions={handleHotelOptions} />}
+      {screen === 'flight-options' && <FlightOptionsScreen handleFlightOptions={handleFlightOptions} />}
+      {screen === 'total-cost' && <TotalCostScreen bookTrip={handleBookTrip} />}
+      {screen === 'trip-booked' && <TripBookedScreen />}
     </>
   );
 };

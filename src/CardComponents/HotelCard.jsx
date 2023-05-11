@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const HotelCard = ({ hotel }) => {
+export const HotelCard = ({ hotel, onButtonClick }) => {
   const classes = useStyles();
 
   const createSummary = () => {
@@ -78,8 +78,13 @@ export const HotelCard = ({ hotel }) => {
             </Box>
           </CardContent>
           <Box display="flex" justifyContent="flex-start" className={classes.bookButton}>
-            <Button variant="contained" color="primary" style={{ marginLeft: '16px', marginRight: '16px' }}>
-              Book
+            <Button
+              variant="contained"
+              onClick={onButtonClick}
+              color="primary"
+              style={{ marginLeft: '16px', marginRight: '16px' }}
+            >
+              Reserve
             </Button>
           </Box>
         </Grid>
