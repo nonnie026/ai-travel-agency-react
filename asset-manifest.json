@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ai-travel-agency-react/static/css/main.0e3dd2b1.css",
-    "main.js": "/ai-travel-agency-react/static/js/main.678d2399.js",
+    "main.js": "/ai-travel-agency-react/static/js/main.2a2806b4.js",
     "index.html": "/ai-travel-agency-react/index.html",
     "main.0e3dd2b1.css.map": "/ai-travel-agency-react/static/css/main.0e3dd2b1.css.map",
-    "main.678d2399.js.map": "/ai-travel-agency-react/static/js/main.678d2399.js.map"
+    "main.2a2806b4.js.map": "/ai-travel-agency-react/static/js/main.2a2806b4.js.map"
   },
   "entrypoints": [
     "static/css/main.0e3dd2b1.css",
-    "static/js/main.678d2399.js"
+    "static/js/main.2a2806b4.js"
   ]
 }
