@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     textAlign: 'center',
   },
+  imageContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: theme.spacing(4),
+  },
 }));
 
 export const FlightOptionsScreen = ({ handleFlightOptions }) => {
@@ -52,6 +58,16 @@ export const FlightOptionsScreen = ({ handleFlightOptions }) => {
           </Grid>
         ))}
       </Grid>
+      <Box className={classes.imageContainer}>
+        <Typography variant="body1">Powered by -</Typography>
+        <a href="https://your-link.com">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Skyscanner_Logo_LockupHorizontal_SkyBlue_RGB.svg/2880px-Skyscanner_Logo_LockupHorizontal_SkyBlue_RGB.svg.png?20200223151859"
+            alt="Your alt text"
+            style={{ width: '100px', marginLeft: '10px' }}
+          />
+        </a>
+      </Box>
     </div>
   );
 };
